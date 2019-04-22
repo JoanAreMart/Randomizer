@@ -30,5 +30,13 @@ namespace Randomizer
             var FormConfig = new Form2();
             FormConfig.Show();
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            if (!Program.disabled)
+            {
+                this.textBox1.Text = Program.rand.Next(Program.min, Program.max).ToString();
+            }
+        }
     }
 }

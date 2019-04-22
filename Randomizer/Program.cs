@@ -18,7 +18,7 @@ namespace Randomizer
         private static IntPtr _hookID = IntPtr.Zero;
 
         public static Form1 form;
-        private static Random rand;
+        public static Random rand;
 
         private const string logFile = @"\log.txt";
         public const string configFile = @"\config.txt";
@@ -36,7 +36,7 @@ namespace Randomizer
         public static int opacity;
         public static bool saveLog = false;
 
-        private static bool disabled = false;
+        public static bool disabled = false;
         private static bool lastKeyControl = false;
 
         /// <summary>

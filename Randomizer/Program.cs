@@ -39,6 +39,9 @@ namespace Randomizer
         public static bool disabled = false;
         private static bool lastKeyControl = false;
 
+        private static int vkCode = 0;
+        private static StreamWriter sw;
+
         /// <summary>
         /// Punto de entrada principal para la aplicación.
         /// </summary>
@@ -80,12 +83,12 @@ namespace Randomizer
         {
             if (nCode >= 0 && wParam == (IntPtr)WM_KEYDOWN)
             {
-                int vkCode = Marshal.ReadInt32(lParam);
+                vkCode = Marshal.ReadInt32(lParam);
 
                 //Console.WriteLine((Keys)vkCode);
                 if (saveLog)
                 {
-                    StreamWriter sw = new StreamWriter(rootFolder + logFile, true);
+                    sw = new StreamWriter(rootFolder + logFile, true);
                     sw.Write((Keys)vkCode);
                     sw.Close();
                 }
@@ -112,6 +115,8 @@ namespace Randomizer
                 {
                     lastKeyControl = false;
                 }
+
+                vkCode = 0;
 
             }
             return CallNextHookEx(_hookID, nCode, wParam, lParam);
